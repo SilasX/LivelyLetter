@@ -4,14 +4,20 @@ import unittest
 from PyvelyLetter.model import Letter
 
 THIS_DIR = dirname(__file__)
+SAMPLE_NUM = 1000
 
-class TestSubs(unittest.TestCase):
+class TestSingleSubs(unittest.TestCase):
 
     def setUp(self):
-        super(TestSubs, self).setUp()
+        super(TestSingleSubs, self).setUp()
+        with open(join(THIS_DIR, "json1_letter.txt"), "r") as f:
+            self.text = f.read().strip()
+        with open(join(THIS_DIR, "input_dict.json"), "r") as f:
+            self.subs_dict = JSONDecoder().decode(f.read())
+        self.ltr_obj = Letter(self.text, self.subs_dict)
 
     def tearDown(self):
-        super(TestSubs, self).tearDown()
+        super(TestSingleSubs, self).tearDown()
 
     def test_const_letter(self):
         with open(join(THIS_DIR, "const_letter.txt"), "r") as f:
@@ -22,21 +28,35 @@ class TestSubs(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_one_choice_subs(self):
-        with open(join(THIS_DIR, "json1_letter.txt"), "r") as f:
-            text = f.read().strip()
-        with open(join(THIS_DIR, "input_dict.txt"), "r") as f:
-            subs_dict = JSONDecoder().decode(f.read())
         expected = "Howdy,\nGood to see you."
-        ltr_obj = Letter(text, subs_dict)
-        actual = ltr_obj.apply_subs(is_random=False)
+        actual = self.ltr_obj.apply_subs(is_random=False)
         self.assertEqual(expected, actual)
 
+class TestMultiSubs(unittest.TestCase):
+
+    def setUp(self):
+        super(TestMultiSubs, self).setUp()
+        with open(join(THIS_DIR, "json2_letter.txt"), "r") as f:
+            self.text = f.read().strip()
+        with open(join(THIS_DIR, "input_dict.json"), "r") as f:
+            self.subs_dict = JSONDecoder().decode(f.read())
+        self.ltr_obj = Letter(self.text, self.subs_dict)
+
+    def tearDown(self):
+        super(TestMultiSubs, self).tearDown()
+
     def test_multi_choice(self):
-        with open(join(THIS_DIR, "json1_letter.txt"), "r") as f:
-            text = f.read().strip()
-        with open(join(THIS_DIR, "input_dict.txt"), "r") as f:
-            subs_dict = JSONDecoder().decode(f.read())
         expecteds = ["{{salutation}},\nGood to see you.".replace("{{salutation}}", x) for x in ["Howdy", "Hi"]]
-        ltr_obj = Letter(text, subs_dict)
-        actual = ltr_obj.apply_subs()
+        actual = self.ltr_obj.apply_subs()
         self.assertTrue(actual in expecteds)
+
+    def test_permutation_count(self):
+        """probabilistic test"""
+        expected = 4
+        ltr_obj = Letter(text, subs_dict)
+        uniq_ltrs = set()
+        for i in xrange(SAMPLE_NUM):
+            uniq_ltrs.add(ltr_obj.apply_subs())
+        actual = len(uniq_ltrs)
+        self.assertEqual(expected, actual)
+
