@@ -1,0 +1,3 @@
+[[Good day to you]][gtg_grp], John.
+I would like to subscribe to your newsletter.
+[[Good day]][gtg_grp].

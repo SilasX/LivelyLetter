@@ -41,19 +41,25 @@ class TestMultiSubs(unittest.TestCase):
         with open(join(THIS_DIR, "input_dict.json"), "r") as f:
             self.subs_dict = JSONDecoder().decode(f.read())
         self.ltr_obj = Letter(self.text, self.subs_dict)
+        self.template = "{{salutation}},\nGood to see you.\n{{ending}}"
 
     def tearDown(self):
         super(TestMultiSubs, self).tearDown()
 
     def test_multi_choice(self):
-        expecteds = ["{{salutation}},\nGood to see you.".replace("{{salutation}}", x) for x in ["Howdy", "Hi"]]
-        actual = self.ltr_obj.apply_subs()
-        self.assertTrue(actual in expecteds)
+        expecteds = []
+        for x in ["Howdy", "Hi"]:
+            for y in ["Bye.", "See you soon."]:
+                version = self.text.replace("{{salutation}}", x)
+                version = version.replace("{{ending}}", y)
+                expecteds.append(version)
+        actuals = [self.ltr_obj.apply_subs() for i in xrange(SAMPLE_NUM)]
+        self.assertTrue(all(expected in actuals for expected in expecteds))
 
     def test_permutation_count(self):
         """probabilistic test"""
         expected = 4
-        ltr_obj = Letter(text, subs_dict)
+        ltr_obj = Letter(self.text, self.subs_dict)
         uniq_ltrs = set()
         for i in xrange(SAMPLE_NUM):
             uniq_ltrs.add(ltr_obj.apply_subs())
