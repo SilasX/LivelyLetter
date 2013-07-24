@@ -1,7 +1,7 @@
 from json import JSONDecoder
 from os.path import dirname, join
 import unittest
-from PyvelyLetter.model import Letter
+from LivelyLetter.model import Letter
 
 THIS_DIR = dirname(__file__)
 SAMPLE_NUM = 1000

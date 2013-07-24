@@ -12,6 +12,7 @@ class Letter(object):
         # markers for re-orderable groups
         self.begin_orderable = "["
         self.end_orderable = "]"
+        #self.order_segments = self.partition()
 
     def apply_subs(self, is_random=True):
         output = self.text
