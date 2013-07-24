@@ -11,9 +11,9 @@ config = {
     'author_email': 'sbarta@gmail.com',
     'version': '0.1',
     'install_requires': ['nose'],
-    'packages': ['PyvelyLetter'],
+    'packages': ['LivelyLetter'],
     'scripts': [],
-    'name': 'PyvelyLetter'
+    'name': 'LivelyLetter'
 }
 
 setup(**config)

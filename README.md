@@ -1,13 +1,13 @@
-#### PyvelyLetter (LivelyLetter for python)
+#### LivelyLetter
 This is a system for making form letters with more variety, realism, and a human touch.
 
 #### Installation
 
 Inside your `virtualenv` environment (you [use that](http://www.virtualenv.org/en/latest/), right?), run:
 
-    pip install git+git://github.com/SilasX/PyvelyLetter.git
+    pip install git+git://github.com/SilasX/LivelyLetter.git
 
-Then you'll be able to import the PyvelyLetter module in all its pythonic goodness.  See "Generating a version of the letter".
+Then you'll be able to import the LivelyLetter module in all its pythonic goodness.  See "Generating a version of the letter".
 
 #### Features
 
@@ -42,7 +42,7 @@ then one of those three values (`Hi`, `Howdy`, or `Good day`) will be substitute
 Why, it's as easy as gettin' your Border Collie out of the farmhouse for some sheep-herdin'.
 
 ##### 1) import the Letter object
-    from PyvelyLetter.model import Letter
+    from LivelyLetter.model import Letter
 
 ##### 2) bring in a file (JSON shown) as a dictionary for the substitution
     from json import JSONDecoder
