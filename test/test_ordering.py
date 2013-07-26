@@ -27,3 +27,18 @@ class TestTwoItemReverse(unittest.TestCase):
             uniq_ltrs.add(ltr_obj.apply_ordering())
         actual = len(uniq_ltrs)
         self.assertEqual(expected, actual)
+
+    def test_ordering_and_choice(self):
+        """test for having a multiple-choice within an ordering"""
+        expected = 2  # either option can go in either place
+        with open(join(THIS_DIR, "order_choice_letter.txt"), "r") as f:
+            text = f.read().strip()
+        with open(join(THIS_DIR, "input_dict.json"), "r") as f:
+            subs_dict = JSONDecoder().decode(f.read())
+        ltr_obj = Letter(text, subs_dict)
+        uniq_ltrs = set()
+        for i in xrange(SAMPLE_NUM):
+            uniq_ltrs.add(ltr_obj.apply_all())
+        actual = len(uniq_ltrs)
+        print [x for x in uniq_ltrs]
+        self.assertEqual(expected, actual)

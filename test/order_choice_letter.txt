@@ -1,0 +1,3 @@
+[#gtg_grp#][[{{salutation}}]], John.
+I would like to subscribe to your newsletter.
+[#gtg_grp#][[{{salutation}}]].
