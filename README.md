@@ -37,6 +37,20 @@ For example, if you have `{{salutation}}` in your form letter, and an entry in y
 
 then one of those three values (`Hi`, `Howdy`, or `Good day`) will be substituted into the ``{{salutation}}`` string instances of the letter.
 
+##### Random re-ordering of indicated sections.
+
+You can mark certain sections as being re-orderable, and LivelyLetter with pick a random ordering for them. (Note: this does not require a dictionary object as input, as the template contains all information necessary to do it.)
+
+For example, let's say you use "Shalom" for both a greeting and a closing, and the same for "Good Day".  You then place one of each at the begining and end of the file.  Surround the text you want to appear in `[[ ]]` on each of them and prepend a label to the ground surrounded in `[# #]`.  Here is what the template would look like:
+
+    [#gtg_grp#][[Shalom]], John.
+    I would like to subscribe to your newsletter.
+    [#gtg_grp#][[Good day]].
+
+The `[#gtg_grp#]` indicates that the strings are part of the same reorderable group.  (`gtg_grp` is arbitrary.)
+
+When it generates an instance of a letter, it will either begin with `Shalom` and end with `Good day` or vice versa, chosen at random.
+
 #### Generating a version of the letter
 
 Why, it's as easy as gettin' your Border Collie out of the farmhouse for some sheep-herdin'.
@@ -56,8 +70,8 @@ Why, it's as easy as gettin' your Border Collie out of the farmhouse for some sh
 ##### 4) Initialize the letter object
     my_letter = Letter(letter_text, subs_dict)
 
-##### 5) Generate a version (and store in variable)
-    letter_version = my_letter.apply_subs()
+##### 5) Generate a version and store in variable -- repeat as necessary
+    letter_version = my_letter.apply_all()
 
 #### Miscellaneous
 This project will eventually be extended to allow for randomly ordering the sections of the letter. 
