@@ -3,6 +3,7 @@ from os.path import dirname, join
 import unittest
 
 from LivelyLetter.model import Letter
+from test.helpers import uniques_after_obj
 
 THIS_DIR = dirname(__file__)
 SAMPLE_NUM = 1000
@@ -22,10 +23,7 @@ class TestTwoItemReverse(unittest.TestCase):
         with open(join(THIS_DIR, "ordering_letter1.txt"), "r") as f:
             text = f.read().strip()
         ltr_obj = Letter(text)
-        uniq_ltrs = set()
-        for i in xrange(SAMPLE_NUM):
-            uniq_ltrs.add(ltr_obj.apply_ordering())
-        actual = len(uniq_ltrs)
+        actual = uniques_after_obj(SAMPLE_NUM, ltr_obj, 'apply_ordering')
         self.assertEqual(expected, actual)
 
     def test_ordering_and_choice(self):
@@ -36,9 +34,5 @@ class TestTwoItemReverse(unittest.TestCase):
         with open(join(THIS_DIR, "input_dict.json"), "r") as f:
             subs_dict = JSONDecoder().decode(f.read())
         ltr_obj = Letter(text, subs_dict)
-        uniq_ltrs = set()
-        for i in xrange(SAMPLE_NUM):
-            uniq_ltrs.add(ltr_obj.apply_all())
-        actual = len(uniq_ltrs)
-        print [x for x in uniq_ltrs]
+        actual = uniques_after_obj(SAMPLE_NUM, ltr_obj, 'apply_all')
         self.assertEqual(expected, actual)

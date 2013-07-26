@@ -1,7 +1,9 @@
 from json import JSONDecoder
 from os.path import dirname, join
 import unittest
+
 from LivelyLetter.model import Letter
+from test.helpers import uniques_after_obj
 
 THIS_DIR = dirname(__file__)
 SAMPLE_NUM = 1000
@@ -60,9 +62,6 @@ class TestMultiSubs(unittest.TestCase):
         """probabilistic test"""
         expected = 4
         ltr_obj = Letter(self.text, self.subs_dict)
-        uniq_ltrs = set()
-        for i in xrange(SAMPLE_NUM):
-            uniq_ltrs.add(ltr_obj.apply_subs())
-        actual = len(uniq_ltrs)
+        actual = uniques_after_obj(SAMPLE_NUM, ltr_obj, 'apply_subs')
         self.assertEqual(expected, actual)
 
