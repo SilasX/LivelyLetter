@@ -16,12 +16,7 @@ class Letter(object):
         self.group_name_end = r'#\]'
         self.group_pat_start = r'\[\['
         self.group_pat_end = r'\]\]'
-        self.group_name_re = self.group_name_start + r'.+' + self.group_name_end #r'\[#.+#\]'  # surrounded by [# and #]
-        self.orderable_re = self.group_pat_start + r'.+' + self.group_pat_end # r'\[\[.+\]\]'  # surrounded by [[ and ]]
-        self.group_pattern_re = self.group_name_re + self.orderable_re  # r'\[#.+#\]\[\[.+\]\]'
-        self.group_name_cpd_re = self.group_name_start + r'(?P<group_name>.+)' + self.group_name_end #r'\[#.+#\]'
-        self.orderable_cpd_re = self.group_pat_start + r'(?P<group_text>.+)' + self.group_pat_end # r'\[\[.+\]\]'  # surrounded by [[ and ]]
-        self.group_pattern_cpd_re = self.group_name_cpd_re + self.orderable_cpd_re
+        self.set_regexes()  # define all member vars that use the above four
         self.partition()
 
     def apply_subs(self, is_random=True):
@@ -71,3 +66,11 @@ class Letter(object):
                 del(order_dict[pattern][index])
                 print "patterns now look like " + str(order_dict[pattern])
         return output
+
+    def set_regexes(self):
+        self.group_name_re = self.group_name_start + r'.+' + self.group_name_end #r'\[#.+#\]'  # surrounded by [# and #]
+        self.orderable_re = self.group_pat_start + r'.+' + self.group_pat_end # r'\[\[.+\]\]'  # surrounded by [[ and ]]
+        self.group_pattern_re = self.group_name_re + self.orderable_re  # r'\[#.+#\]\[\[.+\]\]'
+        self.group_name_cpd_re = self.group_name_start + r'(?P<group_name>.+)' + self.group_name_end #r'\[#.+#\]'
+        self.orderable_cpd_re = self.group_pat_start + r'(?P<group_text>.+)' + self.group_pat_end # r'\[\[.+\]\]'  # surrounded by [[ and ]]
+        self.group_pattern_cpd_re = self.group_name_cpd_re + self.orderable_cpd_re
