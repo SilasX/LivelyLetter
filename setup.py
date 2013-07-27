@@ -10,7 +10,7 @@ config = {
     'download_url': 'None',
     'author_email': 'sbarta@gmail.com',
     'version': '0.1',
-    'install_requires': ['nose'],
+    'install_requires': [],
     'packages': ['LivelyLetter'],
     'scripts': [],
     'name': 'LivelyLetter'

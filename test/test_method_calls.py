@@ -2,7 +2,7 @@ from mock import Mock
 from os.path import dirname, join
 import unittest
 
-from LivelyLetter.model import Letter
+from LivelyLetter import Letter
 
 THIS_DIR = dirname(__file__)
 SAMPLE_NUM = 1000

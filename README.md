@@ -56,7 +56,7 @@ When it generates an instance of a letter, it will either begin with `Shalom` an
 Why, it's as easy as gettin' your Border Collie out of the farmhouse for some sheep-herdin'.
 
 ##### 1) import the Letter object
-    from LivelyLetter.model import Letter
+    from LivelyLetter import Letter
 
 ##### 2) bring in a file (JSON shown) as a dictionary for the substitution
     from json import JSONDecoder

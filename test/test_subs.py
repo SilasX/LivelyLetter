@@ -2,7 +2,7 @@ from json import JSONDecoder
 from os.path import dirname, join
 import unittest
 
-from LivelyLetter.model import Letter
+from LivelyLetter import Letter
 from test.helpers import uniques_after_obj
 
 THIS_DIR = dirname(__file__)
