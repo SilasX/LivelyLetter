@@ -41,7 +41,8 @@ then one of those three values (`Hi`, `Howdy`, or `Good day`) will be substitute
 
 Got your own funky ideas for what to swap out in?  No problem!  You can tell the template to substitute into the letter based on given objects and methods. Just mark the place for the substitution in the form `[[# object_string#method #]]` and pass in a dictionary mapping all `object_string`s to object variables.  For example, if your template looks like this (stored in the `text` variable):
 
-    Jane, I like how you mentioned [[# discussion#topic #]]. You spent a full [[# discussion#word_count #]] words on it!
+    Jane, I like how you mentioned [[# discussion#topic #]]. You
+    spent a full [[# discussion#word_count #]] words on it!
 
 Then you just need to make sure you have a `discussion` object defined, and you can apply the object methods as so:
 
