@@ -37,6 +37,21 @@ For example, if you have `{{salutation}}` in your form letter, and an entry in y
 
 then one of those three values (`Hi`, `Howdy`, or `Good day`) will be substituted into the ``{{salutation}}`` string instances of the letter.
 
+##### Substitutions based on object methods.
+
+Got your own funky ideas for what to swap out in?  No problem!  You can tell the template to substitute into the letter based on given objects and methods. Just mark the place for the substitution in the form `[[# object_string#method #]]` and pass in a dictionary mapping all `object_string`s to object variables.  For example, if your template looks like this (stored in the `text` variable):
+
+    Jane, I like how you mentioned [[# discussion#topic #]]. You spent a full [[# discussion#word_count #]] words on it!
+
+Then you just need to make sure you have a `discussion` object defined, and you can apply the object methods as so:
+
+    ltr_obj = Letter(text=text)
+    output_letter = ltr_obj.apply_objects({
+        'discussion': discussion,
+    })
+
+In the example above, you would need to make sure that the `discussion` object returns something when `.topic` and `.word_count` are called on it.
+
 ##### Random re-ordering of indicated sections.
 
 You can mark certain sections as being re-orderable, and LivelyLetter with pick a random ordering for them. (Note: this does not require a dictionary object as input, as the template contains all information necessary to do it.)
