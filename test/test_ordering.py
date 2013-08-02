@@ -36,3 +36,7 @@ class TestTwoItemReverse(unittest.TestCase):
         ltr_obj = Letter(text, subs_dict)
         actual = uniques_after_obj(SAMPLE_NUM, ltr_obj, 'apply_all')
         self.assertEqual(expected, actual)
+
+if __name__ == '__main__':
+    unittest.main()
+

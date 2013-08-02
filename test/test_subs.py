@@ -8,6 +8,7 @@ from test.helpers import uniques_after_obj
 THIS_DIR = dirname(__file__)
 SAMPLE_NUM = 1000
 
+
 class TestSingleSubs(unittest.TestCase):
 
     def setUp(self):
@@ -64,4 +65,7 @@ class TestMultiSubs(unittest.TestCase):
         ltr_obj = Letter(self.text, self.subs_dict)
         actual = uniques_after_obj(SAMPLE_NUM, ltr_obj, 'apply_subs')
         self.assertEqual(expected, actual)
+
+if __name__ == '__main__':
+    unittest.main()
 

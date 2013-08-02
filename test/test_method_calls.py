@@ -28,3 +28,7 @@ class TestMethodSubs(unittest.TestCase):
             'discussion': discussion,
         })
         self.assertEqual(expected, actual)
+
+if __name__ == '__main__':
+    unittest.main()
+
