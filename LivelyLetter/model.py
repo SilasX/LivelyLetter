@@ -84,10 +84,12 @@ class Letter(object):
     def _set_regexes(self):
         self.group_name_re = self.group_name_start + r'.+' + self.group_name_end #r'\[#.+#\]'  # surrounded by [# and #]
         self.orderable_re = self.group_pat_start + r'.+' + self.group_pat_end # r'\[\[.+\]\]'  # surrounded by [[ and ]]
+        self.cond_re = r'\[\[# .++#.+ #\]\]\|\{.+\}'
         self.group_name_cpd_re = self.group_name_start + r'(?P<group_name>.+)' + self.group_name_end #r'\[#.+#\]'
         self.orderable_cpd_re = self.group_pat_start + r'(?P<group_text>.+)' + self.group_pat_end # r'\[\[.+\]\]'  # surrounded by [[ and ]]
         self.group_pattern_cpd_re = self.group_name_cpd_re + self.orderable_cpd_re
         self.object_cpd_re = self.obj_call_start + r'(?P<object_name>[^#]+)' + self.obj_method_mark + r'(?P<method_name>[^#]+)' + self.obj_call_end
+        self.cond_cpd_re = r'\[\[# (?P<object_name>[^#]+#(?<method_name>[^#]+) #\]\]\|\{(?P<optional_text>.+)\}'
 
     def _partition_groups(self):
         """create the self.order_groups member variable to prepare for ordering theletter"""
