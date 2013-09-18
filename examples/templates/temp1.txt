@@ -1,0 +1,10 @@
+Hi [[# customer#name #]],
+
+[#reassurance#][[Be assured, we take all complaints seriously and this is to inform you of our intentions.]]
+
+We heard about your {{problem}}.  We're going to fix it.
+
+[#reassurance#][[As you know, we make every attempt to keep our customers happy.]]
+
+Thanks,
+Silas
