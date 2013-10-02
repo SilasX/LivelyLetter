@@ -1,7 +1,8 @@
 {
     "clarification": [
         "Just so we're on the same page, I mean this ad:",
-        "This is the ad I had mind:"
+        "This is the ad I had mind:",
+        "Here's the url so we're talking about the same thing:"
     ],
 
     "closing": [
@@ -9,5 +10,11 @@
         "Have a good one!",
         "Don't be shy!",
         "Looking forward to a bright future together!"
+    ],
+
+    "interest": [
+        "interested in",
+        "thinking about renting",
+        "thought it would be a good idea to check out"
     ]
 }

@@ -1,6 +1,6 @@
 Hi [[# ad#name #]],
 
-I saw your ad and was interested in the unit.
+I saw your ad and was {{interest}} the unit.
 
 [#reassurance#][[Be assured that I have excellent credit and can submit to the appropriate checks.]]
 
@@ -9,6 +9,8 @@ I saw your ad and was interested in the unit.
 [[# ad#url #]]
 
 [#reassurance#][[I would want to bring my two kittens with me if I moved in.]]
+
+[#reassurance#][[Don't worry -- I'm not one of those psychos.]]
 
 {{closing}}
 
