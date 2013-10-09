@@ -99,7 +99,10 @@ class Letter(object):
         parsed_groups = re.findall(group_pattern_cpd, self.text)
         for x in parsed_groups:
             this_gp_pattern = self.group_name_start + x[0] + self.group_name_end + self.orderable_re
-            self.order_groups[this_gp_pattern] = [x[1] for x in parsed_groups]
+            if this_gp_pattern in self.order_groups:
+                self.order_groups[this_gp_pattern].append(x[1])
+            else:
+                self.order_groups[this_gp_pattern] = [x[1]]
 
     def _partition_object_calls(self):
         """create the self.object_calls member variable to prepare for inserting method invocations"""
