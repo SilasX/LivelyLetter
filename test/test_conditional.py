@@ -18,7 +18,7 @@ class TestConditional(unittest.TestCase):
         super(TestConditional, self).tearDown()
 
     def test_conditional_true(self):
-        expected = "Jane, I like how you mentioned widgets. [[# discussion#is_long #]]|{You spent a lot of time on it!}"
+        expected = "Jane, I like how you mentioned widgets. You spent a lot of time on it!"
         discussion = Mock()
         discussion.is_long = True
         ltr_obj = Letter(text=self.text)
